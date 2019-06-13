@@ -1,4 +1,4 @@
-package eg.com.iti.githubjobs.screens.home;
+package eg.com.iti.githubjobs.screens.screens.home.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,23 +11,22 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import eg.com.iti.githubjobs.R;
+import eg.com.iti.githubjobs.screens.model.JobPojo;
 
 public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder>  implements View.OnClickListener{
 
-    ArrayList<JobPojo> arrayList;
-    Context context;
-    MainActivity mainActivity;
+    private  List<JobPojo> jobsList;
+    private  Context context;
 
     JobPojo pojo=new JobPojo();
 
-    public JobsAdapter(ArrayList<JobPojo> arrayList, Context context, MainActivity mainActivity)
+    public JobsAdapter(List<JobPojo> jobsList, Context context)
     {
-        this.arrayList=arrayList;
+        this.jobsList=jobsList;
         this.context=context;
-        this.mainActivity=mainActivity;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i)
@@ -39,13 +38,14 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder>  i
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        pojo=arrayList.get(position);
+        pojo=jobsList.get(position);
         viewHolder.bindItem(pojo);
     }
 
     @Override
-    public int getItemCount() {
-        return arrayList.size();
+    public int getItemCount()
+    {
+        return jobsList.size();
     }
 
     @Override
@@ -69,10 +69,10 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder>  i
         }
         public void bindItem(JobPojo item)
         {
-            Picasso.get().load(item.getCompany_logo()).into(imagviewJob);
-            txtJobTitle.setText(item.getTitle());
-            txtCompanyName.setText(item.getCompany());
-            txtDate.setText(item.getCreated_at());
+            Picasso.get().load(item.companyUrl).into(imagviewJob);
+            txtJobTitle.setText(item.title);
+            txtCompanyName.setText(item.company);
+            txtDate.setText(item.createdAt);
         }
         @Override
         public void onClick(View v) {
