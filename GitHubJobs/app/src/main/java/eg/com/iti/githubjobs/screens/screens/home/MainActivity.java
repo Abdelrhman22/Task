@@ -20,7 +20,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity implements MainContract.MainView {
-    List<JobPojo> jobsList;
+    List<JobPojo> jobsList = new ArrayList<>();
     MainContract.MainPresenter mainPresenter;
     RecyclerView recyclerView;
     EditText editText;

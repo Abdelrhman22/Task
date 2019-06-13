@@ -2,6 +2,7 @@ package eg.com.iti.githubjobs.screens.screens.home.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +70,8 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder>  i
         }
         public void bindItem(JobPojo item)
         {
-            Picasso.get().load(item.companyUrl).into(imagviewJob);
+            Log.i("message",""+item.companyLogo);
+            Picasso.get().load(item.companyUrl).placeholder(R.drawable.loading).resize(80, 80).centerCrop().into(imagviewJob);
             txtJobTitle.setText(item.title);
             txtCompanyName.setText(item.company);
             txtDate.setText(item.createdAt);
