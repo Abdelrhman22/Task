@@ -70,8 +70,7 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder>  i
         }
         public void bindItem(JobPojo item)
         {
-            Log.i("message",""+item.companyLogo);
-            Picasso.get().load(item.companyUrl).placeholder(R.drawable.loading).resize(80, 80).centerCrop().into(imagviewJob);
+            Picasso.get().load(item.companyLogo).placeholder(R.drawable.load).into(imagviewJob);
             txtJobTitle.setText(item.title);
             txtCompanyName.setText(item.company);
             txtDate.setText(item.createdAt);
